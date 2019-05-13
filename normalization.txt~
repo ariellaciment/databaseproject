@@ -1,0 +1,7 @@
+In the employee table- it is in fourth normal form, because there is no multi value dependency each Manager_ID  has its own unique values, they are not dependent on each other, each attribute is independent of itself. 
+
+
+Manager table is in fourth normal form- in third normal form and A derives B and A is a super key, so here Manager_ID derives the information of the manager, the first name, last name, count, team ID. all of the different attributes are derived from the primary key
+
+Team table is BCNF because it is in third normal form and A derives B and A is a super key, so here Team Name is the superkey. Each attribute depends on the information of the super key the department is dependent on the team name (that is how you know what dept it is in) and the team ID, team count (depends on the team name, every team name has a different count),  manager ID and team ID references other tables which are the primary keys
+
