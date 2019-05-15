@@ -11,7 +11,7 @@ mycursor = cnx.cursor()
 
 mycursor.execute("CREATE TABLE IF NOT EXISTS Employee\
 (Employee_Name varchar(15),\
-Manager_ID varchar(10),\
+Manager_ID varchar(10) NOT NULL,\
     Hours_Total varchar(100),\
     Meeting_Hours varchar(100),\
     Client_Hours varchar(100),\

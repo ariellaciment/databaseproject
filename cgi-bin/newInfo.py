@@ -6,7 +6,7 @@ import mysql.connector
 form = cgi.FieldStorage()
 
 Employee_Name = form.getvalue('Ename')
-Manager_ID = form.getvalue('MID')
+M_ID = form.getvalue('MID')
 Hours_Totals = form.getvalue('Hours')
 Meeting_Hours = form.getvalue('meeting')
 Client_Hours = form.getvalue('client')
@@ -15,20 +15,20 @@ Other_Hours = form.getvalue('other')
 cnx = mysql.connector.connect(user = 'aciment1', database = 'aciment11', password = 'aciment1', host = 'localhost')
 cursor = cnx.cursor(buffered = True)
 
-query ="INSERT INTO Employee(Employee_Name, Manager_ID, Hours_Total, Meeting_Hours, Client_Hours, Email_Hours, Other_Hours)\
-VALUES(%s, %s, %s, %s, %s, %s, %s)"
-#% (Employee_Name, Manager_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
+#query =("INSERT INTO Employee (Employee_Name, M_ID, Hours_Total, Meeting_Hours, Client_Hours, Email_Hours, Other_Hours) VALUES(%s, %s, %s, %s, %s, %s, %s)")
 
-cursor.execute(query,(Employee_Name, Manager_ID , Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours, Other_Hours,))
+cursor.execute("INSERT INTO Employee (Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours) VALUES ('%s','%s','%s','%s','%s','%s','%s')", (Employee_Name,M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours))
+               
+#value = (Employee_Name, M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
 
+#cursor.execute(query,(Employee_Name, M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours))
 print "Content-type:text/html\r\n\r\n"
 print "<html>"
 print "<body>"                                                                         
 print" <h1> INSERTED EMPLOYEE INFORMATION"
 print "</h1>"
 
-for name in cursor:
-    #print name                                                                        
+for name in cursor:                                                                        
     print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
 
 print "</body>"
