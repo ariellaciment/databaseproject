@@ -1,4 +1,8 @@
-#!/usr/bin/python                                                                         
+#!/usr/bin/python
+import sys
+import traceback
+print "Content-Type: text/html"
+print
 import cgi, cgitb
 
 import mysql.connector
@@ -6,34 +10,38 @@ import mysql.connector
 form = cgi.FieldStorage()
 
 Employee_Name = form.getvalue('Ename')
-M_ID = form.getvalue('MID')
+Manager_ID = form.getvalue('MID')
 Hours_Totals = form.getvalue('Hours')
 Meeting_Hours = form.getvalue('meeting')
 Client_Hours = form.getvalue('client')
 Email_Hours = form.getvalue('email')
 Other_Hours = form.getvalue('other')
-cnx = mysql.connector.connect(user = 'aciment1', database = 'aciment11', password = 'aciment1', host = 'localhost')
+cnx = mysql.connector.connect(user='aciment1',database= 'aciment11', password= 'aciment1', host = 'localhost')
 cursor = cnx.cursor(buffered = True)
 
-#query =("INSERT INTO Employee (Employee_Name, M_ID, Hours_Total, Meeting_Hours, Client_Hours, Email_Hours, Other_Hours) VALUES(%s, %s, %s, %s, %s, %s, %s)")
+query = "INSERT INTO Employee(Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours) VALUES(%s,%s,%s,%s,%s,%s,%s)"
 
-cursor.execute("INSERT INTO Employee (Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours) VALUES ('%s','%s','%s','%s','%s','%s','%s')", (Employee_Name,M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours))
-               
+values = (Employee_Name,Manager_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
+try:
+    cursor.execute(query,(values))               
 #value = (Employee_Name, M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
 
-#cursor.execute(query,(Employee_Name, M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours))
-print "Content-type:text/html\r\n\r\n"
-print "<html>"
-print "<body>"                                                                         
-print" <h1> INSERTED EMPLOYEE INFORMATION"
-print "</h1>"
+    print "Content-type:text/html\r\n\r\n"
+    print "<html>"
+    print "<body>"
+    print" <h1> YOU HAVE INSERTED THE EMPLOYEE'S INFORMATION"
+    print "</h1>"
+    #cnx.commit()
+    #cursor.close()
+    #cnx.close()
+    #for name in cursor:                                                                        
+    #print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
+    print "</body>"
+    print "</html>"
 
-for name in cursor:                                                                        
-    print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
-
-print "</body>"
-print "</html>"
-
-cnx.commit()
-cursor.close()
-cnx.close()
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+except:
+    print "\n\n<PRE>"
+    traceback.print_exc()

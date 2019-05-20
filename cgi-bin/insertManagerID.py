@@ -43,7 +43,6 @@ print '<input type="text" name="deleteName"><br>'
 print '<input type="submit" value="Submit"></form'
 
 
-
 print '<h1>To find a Team:</h1>'
 print '<form action="searchTeam.py">Enter Team Name:<br>'
 print '<input type="text" name="team"><br>'
