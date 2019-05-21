@@ -29,13 +29,9 @@ try:
     print "Content-type:text/html\r\n\r\n"
     print "<html>"
     print "<body>"
-    print" <h1> YOU HAVE INSERTED THE EMPLOYEE'S INFORMATION"
-    print "</h1>"
-    #cnx.commit()
-    #cursor.close()
-    #cnx.close()
-    #for name in cursor:                                                                        
-    #print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
+    print "<h1> YOU HAVE INSERTED THE EMPLOYEE'S INFORMATION</h1>"
+                                                             
+    print "<br> Employee Name:", Employee_Name, "<br>Manager ID:", Manager_ID, "<br>Total Hours:",Hours_Totals, "<br>Meeting Hours:", Meeting_Hours, "<br>Client Hours:", Client_Hours, "<br>Email Hours:", Email_Hours,"<br>Other Hours:", Other_Hours, "<br>"
     print "</body>"
     print "</html>"
 

@@ -15,19 +15,23 @@ Delete_Name = form.getvalue('deleteName')
 cnx = mysql.connector.connect(user='aciment1', password='aciment1', host='localhost',database='aciment11')
 
 cursor = cnx.cursor(buffered = True)
+query1 = ("SELECT * FROM Manager WHERE Manager_FirstName = %s")
+cursor.execute(query1, (Delete_Name,))
+if cursor.fetchone():
+    query2 =("DELETE FROM Manager WHERE Manager_FirstName=%s")
+    cursor.execute(query2, (Delete_Name,))
+    
+query3 = ("DELETE FROM Employee WHERE Employee_Name = %s")
 
-query =("DELETE FROM Employee WHERE Employee_Name=%s")
 try:
-    cursor.execute(query, (Delete_Name,))
+    cursor.execute(query3, (Delete_Name,))
 
     print "Content-type:text/html\r\n\r\n"
     print "<html>"
     print "<body>"
-    print" <h1> YOU HAVE DELETED THE EMPLOYEE'S INFORMATION"
+    print" <h1> YOU HAVE DELETED THE EMPLOYEE'S %s  INFORMATION" % (Delete_Name)
     print "</h1>"
     print "<h1>"
-    #for x in cursor:
-        #print x
 #print "<h1> YOU HAVE DELETED THE EMPLOYEE" + (Delete_Name)
     print '</h1>'
     print "</body>"
