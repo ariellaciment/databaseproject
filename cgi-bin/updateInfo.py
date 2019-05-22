@@ -1,7 +1,7 @@
-#!/usr/bin/python                                                                                              
+#!/usr/bin/python                                                                                           
 import sys
 import traceback
-print "Content-Type: text/html"
+print "Content-type:text/html"
 print
 import cgi, cgitb
 
@@ -24,20 +24,41 @@ cnx = mysql.connector.connect(user='aciment1', database='aciment11', password='a
 cursor = cnx.cursor(buffered = True)
 
 #query =("SELECT * FROM Employee WHERE Employee_Name = %s")
+query = ("UPDATE Employee SET Employee_Name = %s, Manager_ID = %s, Hours_Total = %s, Meeting_Hours = %s, Client_Hours = %s, Email_Hours = %s, Other_Hours = %s WHERE Employee_Name = %s")
 
-query =("UPDATE Employee SET Employee_Name='"+Employee_Name+"',Manager_ID='"+Manager_ID+"',Hours_Total='"+Hours_Total+"', Meeting_Hours='"+Meeting_Hours+"',Client_Hours='"+Client_Hours+"',Email_Hours='"+Email_Hours+"', Other_Hours='"+Other_Hours+"' WHERE Employee_Name='"+updateName+"'")
+#query =("UPDATE Employee SET Employee_Name='"+Employee_Name+"',Manager_ID='"+Manager_ID+"',Hours_Total='"+Hours_Total+"', Meeting_Hours='"+Meeting_Hours+"',Client_Hours='"+Client_Hours+"',Email_Hours='"+Email_Hours+"', Other_Hours='"+Other_Hours+"' WHERE Employee_Name='"+updateName+"'")
 
-#vals = (Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours, Other_Hours)
+vals = (Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours, Other_Hours, updateName)
 try:
-    cursor.execute(query)
-
-
+    cursor.execute(query,vals)
     print "Content-type:text/html\r\n\r\n"
     print "<html>"
-    print "<body>"                                                                                                          
+    print "<body>"
     print" <h1> UPDATED EMPLOYEE INFORMATION"
     print "</h1>"
-#name = cursor.fetchall()
+    print "<h1>"
+    print "Employee Name:",Employee_Name
+    print "</h1>"
+    print"<h1>"
+    print "Manager ID:", Manager_ID
+    print "</h1>"
+    print "<h1>"
+    print "Total Hours:", Hours_Total
+    print "</h1>"
+    print "<h1>"
+    print "Meeting Hours:", Meeting_Hours
+    print "</h1>"
+    print "<h1>"
+    print "Client Hours:",Client_Hours
+    print "</h1>"
+    print "<h1>"
+    print "Email Hours:", Email_Hours
+    print "</h1>"
+    print"<h1>"
+    print "Other Hours:", Other_Hours
+    print "</h1>"
+    
+    #name = cursor.fetchall()
 #for name in cursor:
  #   print name                                                                                                      
     #print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
