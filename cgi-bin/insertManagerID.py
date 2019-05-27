@@ -48,4 +48,13 @@ print '<form action="searchTeam.py">Enter Team Name:<br>'
 print '<input type="text" name="team"><br>'
 print '<input type="submit" value="Submit"></form'
 
+#print '<body>To insert a new Manager:</body>'
+#print '<form action="insertManager.py">Enter the new Managers name:<br>'
+#print '<input type="text" name="name"><br>'
+#print '<input type="submit" value="Submit"></form>'
+
+#print '<h1>To insert a Team:</h1>'
+#print '<form action="insertTeam.py">Enter Team Name:<br>'
+#print '<input type="text" name="team"><br>'
+#print '<input type="submit" value="Submit"></form'
 print '</html>'

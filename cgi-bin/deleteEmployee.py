@@ -34,7 +34,7 @@ try:
     print" <h1> YOU HAVE DELETED THE EMPLOYEE %s's  INFORMATION" % (Delete_Name)
     print "</h1>"
     print "<h1>"
-#print "<h1> YOU HAVE DELETED THE EMPLOYEE" + (Delete_Name)
+
     print '</h1>'
     print "</body>"
     print "</html>"

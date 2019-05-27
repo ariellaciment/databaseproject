@@ -6,11 +6,11 @@ print
 import cgi, cgitb
 
 import mysql.connector
-# Create instance of FieldStorage                                                         
+# Create instance of FieldStorage                                                       
 form = cgi.FieldStorage()
 
 Employee_Name = form.getvalue('Ename')
-Manager_ID = form.getvalue('MID')
+Manager_ID = str(form.getvalue('MID'))
 Hours_Totals = form.getvalue('Hours')
 Meeting_Hours = form.getvalue('meeting')
 Client_Hours = form.getvalue('client')
@@ -22,9 +22,9 @@ cursor = cnx.cursor(buffered = True)
 query = "INSERT INTO Employee(Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours) VALUES(%s,%s,%s,%s,%s,%s,%s)"
 
 values = (Employee_Name,Manager_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
+
 try:
     cursor.execute(query,(values))               
-#value = (Employee_Name, M_ID,Hours_Totals,Meeting_Hours,Client_Hours,Email_Hours,Other_Hours)
 
     print "Content-type:text/html\r\n\r\n"
     print "<html>"

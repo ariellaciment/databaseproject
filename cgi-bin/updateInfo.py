@@ -26,7 +26,6 @@ cursor = cnx.cursor(buffered = True)
 #query =("SELECT * FROM Employee WHERE Employee_Name = %s")
 query = ("UPDATE Employee SET Employee_Name = %s, Manager_ID = %s, Hours_Total = %s, Meeting_Hours = %s, Client_Hours = %s, Email_Hours = %s, Other_Hours = %s WHERE Employee_Name = %s")
 
-#query =("UPDATE Employee SET Employee_Name='"+Employee_Name+"',Manager_ID='"+Manager_ID+"',Hours_Total='"+Hours_Total+"', Meeting_Hours='"+Meeting_Hours+"',Client_Hours='"+Client_Hours+"',Email_Hours='"+Email_Hours+"', Other_Hours='"+Other_Hours+"' WHERE Employee_Name='"+updateName+"'")
 
 vals = (Employee_Name,Manager_ID,Hours_Total,Meeting_Hours,Client_Hours,Email_Hours, Other_Hours, updateName)
 try:
