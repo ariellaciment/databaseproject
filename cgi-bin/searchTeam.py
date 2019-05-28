@@ -9,7 +9,7 @@ Team = form.getvalue('team')
 cnx = mysql.connector.connect(user = 'aciment1', database = 'aciment11', password = 'acim\
 ent1', host = 'localhost')
 cursor = cnx.cursor(buffered = True)
-
+#to match up the team that the user inputed to the team in the database
 query =("SELECT * FROM Team WHERE Team_Name=%s")
 
 cursor.execute(query, (Team,))

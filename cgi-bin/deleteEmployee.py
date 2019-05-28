@@ -11,7 +11,7 @@ import mysql.connector
 form = cgi.FieldStorage()
 #get the value that the user inputed in the URL
 Delete_Name = form.getvalue('deleteName')
-
+#connecting to the database
 cnx = mysql.connector.connect(user='aciment1', password='aciment1', host='localhost',database='aciment11')
 
 cursor = cnx.cursor(buffered = True)
