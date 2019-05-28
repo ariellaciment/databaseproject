@@ -56,12 +56,6 @@ try:
     print"<h1>"
     print "Other Hours:", Other_Hours
     print "</h1>"
-    
-    #name = cursor.fetchall()
-#for name in cursor:
- #   print name                                                                                                      
-    #print "<br> Employee Name:", name[0], "<br>Manager ID:", name[1], "<br>Total Hours:", name[2], "<br>Meeting Hours:", name[3], "<br>Client Hours:", name[4], "<br>Email Hours:", name[5],"<br>Other Hours:", name[6], "<br>"
-
     print "</body>"
     print "</html>"
 
