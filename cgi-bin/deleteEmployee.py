@@ -16,12 +16,12 @@ cnx = mysql.connector.connect(user='aciment1', password='aciment1', host='localh
 
 cursor = cnx.cursor(buffered = True)
 #select all of the managers that have the name
-query1 = ("SELECT * FROM Manager WHERE Manager_FirstName = %s")
-cursor.execute(query1, (Delete_Name,))
-if cursor.fetchone():
+#query1 = ("SELECT * FROM Manager WHERE Manager_FirstName = %s")
+#cursor.execute(query1, (Delete_Name,))
+#if cursor.fetchone():
     #delete those managers
-    query2 =("DELETE FROM Manager WHERE Manager_FirstName=%s")
-    cursor.execute(query2, (Delete_Name,))
+    #query2 =("DELETE FROM Manager WHERE Manager_FirstName=%s")
+    #cursor.execute(query2, (Delete_Name,))
     #delete those employees with that name
 query3 = ("DELETE FROM Employee WHERE Employee_Name = %s")
 
